@@ -1,26 +1,42 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const session = require('express-session');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// middleware setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// express-session setup
+const sess = {
+  secret: 'ausazko hitz multzoa',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {},
+};
+app.use(session(sess));
+
+// serve static files
+app.use(express.static(path.join(__dirname, 'public/')));
+//app.use(express.static(path.join(__dirname, 'views')));
+
+
+// username and password
+const myusername = 'user1';
+const mypassword = 'mypassword';
+
+// routes setup
+app.use('/', require('./routes/index'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
