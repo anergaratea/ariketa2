@@ -6,6 +6,10 @@ const users = require('../public/js/database');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Views' });
 });
+router.get('/form.html', function(req, res, next) {
+  res.render('form', { errorMessage: '' });
+});
+
 
 router.get('/protected', (req, res) => {
   if (req.session.userid) {
