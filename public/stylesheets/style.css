@@ -26,15 +26,19 @@ form .input-field:first-child {
   margin-bottom: 1.5rem;
 }
 
-form input[type="submit"] {
-  background: linear-gradient(to left, #4776E6, #8e54e9);
+/* Add a class to the login button for specific styling */
+#login {
+  background: #28a745; /* Green background color */
   color: white;
+  border: none;
   border-radius: 4px;
-  margin-top: 2rem;
-  padding: 0.4rem;
+  margin-top: 1.5rem;
+  padding: 0.8rem; /* Increased padding for a larger button */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Added a smooth transition effect */
 }
 
-.error-message {
-  color: red;
-  margin-top: 1rem;
+#login:hover {
+  background-color: #218838; /* Darker green background on hover */
 }
+
