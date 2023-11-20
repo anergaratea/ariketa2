@@ -1,9 +1,11 @@
 <html>
 <head>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/js/main.js" defer></script>
+
 </head>
 <body>
-<form action="/user" method="post">
+<form  method="post">
     <h2>Login</h2>
     <div class="input-field">
         <input type="text" name="username" id="username" placeholder="Enter Username">
@@ -11,10 +13,9 @@
     <div class="input-field">
         <input type="password" name="password" id="password" placeholder="Enter Password">
     </div>
-    <input type="submit" value="LogIn">
-    <% if(errorMessage) { %>
-        <p style="color: red;"><%= errorMessage %></p>
-    <% } %>
+    <input type="button" id = login value="LogIn">
+    <p id="errorMessage" style="color: red;"></p>
+
 </form>
 
 </body>
